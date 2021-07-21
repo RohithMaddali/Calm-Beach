@@ -14,6 +14,7 @@ public class Fadout : MonoBehaviour
     public bool timerIsRunning = false;
     public bool time;
     private int addTimer = 10;
+    public float timeCap;
     //Timer starts at 20 secs, after 10 secs passed, spawn sun, next 10 secs, spawn beach.
     //Timer starts at 20 secs, after 10 secs passed, spawn sun, if we untick the sun box, despawn sun and add 10 seconds.
 
@@ -47,8 +48,7 @@ public class Fadout : MonoBehaviour
         else if(timeRemaining >= beachTime && beachSpawned == true)
         {
             beachSpawned = false;
-            beach.SetBool("despawn", true);
-            
+            beach.SetBool("despawn", true);            
         }
 
         if (timeRemaining <= oceanTime)
@@ -60,8 +60,7 @@ public class Fadout : MonoBehaviour
         else if(timeRemaining >= oceanTime && oceanSpawned == true)
         {
             oceanSpawned = false;
-            ocean.SetBool("despawn", true);
-            
+            ocean.SetBool("despawn", true);            
         }
 
         if (timeRemaining <= pierTime)
@@ -86,8 +85,7 @@ public class Fadout : MonoBehaviour
         else if(timeRemaining >= rockTime && rockSpawned == true)
         {
             rockSpawned = false;
-            rock.SetBool("despawn", true);
-            
+            rock.SetBool("despawn", true);               
         }
         
         if (timeRemaining <= umbrellaTime)
@@ -153,6 +151,16 @@ public class Fadout : MonoBehaviour
                 timerIsRunning = false;
             }
         }
+
+        if (!timerIsRunning)
+        {
+            timeRemaining += Time.deltaTime;
+        }
+        
+        if(timeRemaining >= timeCap)
+        {
+            timerIsRunning = true;
+        }      
     }
 
     public void Timer()
@@ -170,6 +178,11 @@ public class Fadout : MonoBehaviour
             timeRemaining += addTimer;
         }
         
+    }
+
+    public void AddTime()
+    {
+
     }
 
     public void OnTime()
