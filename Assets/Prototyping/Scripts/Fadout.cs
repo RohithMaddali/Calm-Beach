@@ -22,10 +22,9 @@ public class Fadout : MonoBehaviour
         
         // Starts the timer automatically
         timerIsRunning = true;
-
         // Calls TestCondition after 0 seconds 
         // and repeats every 10 seconds.      
-       
+
     }
 
     public void Update()
@@ -42,37 +41,49 @@ public class Fadout : MonoBehaviour
         if (timeRemaining <= beachTime)
         {
             beachSpawned = true;
+            beach.SetBool("spawn", true);
+            beach.SetBool("despawn", false);
         }
         else
         {
             beachSpawned = false;
+            
         }
 
         if (timeRemaining <= oceanTime)
         {
             oceanSpawned = true;
+            ocean.SetBool("spawn", true);
+            ocean.SetBool("despawn", false);
         }
         else
         {
             oceanSpawned = false;
+            
         }
 
         if (timeRemaining <= pierTime)
         {
             pierSpawned = true;
+            pier.SetBool("spawn", true);
+            pier.SetBool("despawn", false);
         }
         else
         {
             pierSpawned = false;
+            
         }
 
         if (timeRemaining <= rockTime)
         {
             rockSpawned = true;
+            rock.SetBool("spawn", true);
+            rock.SetBool("despawn", false);
         }
         else
         {
             rockSpawned = false;
+            
         }
         
         if (timeRemaining <= umbrellaTime)
