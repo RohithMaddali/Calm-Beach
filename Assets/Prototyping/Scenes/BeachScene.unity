@@ -2609,16 +2609,16 @@ MonoBehaviour:
   bird: {fileID: 0}
   wall: {fileID: 0}
   rainbow: {fileID: 0}
-  skyboxTime: 170
-  beachTime: 160
-  oceanTime: 150
-  pierTime: 140
-  rockTime: 130
-  umbrellaTime: 120
-  birdTime: 110
-  wallTime: 100
-  rainbowTime: 90
-  everythingSpawnedTime: 90
+  skyboxTime: 75
+  beachTime: 70
+  oceanTime: 65
+  pierTime: 60
+  rockTime: 55
+  umbrellaTime: 50
+  birdTime: 45
+  wallTime: 40
+  rainbowTime: 35
+  everythingSpawnedTime: 30
   skySpawned: 0
   beachSpawned: 0
   oceanSpawned: 0
@@ -2629,7 +2629,7 @@ MonoBehaviour:
   wallSpawned: 0
   rainbowSpawned: 0
   everythingSpawned: 0
-  timeRemaining: 180
+  timeRemaining: 80
   timerIsRunning: 0
   time: 0
 --- !u!4 &1827002466

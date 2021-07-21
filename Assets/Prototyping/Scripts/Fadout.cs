@@ -33,7 +33,7 @@ public class Fadout : MonoBehaviour
         {
             skySpawned = true;
         }
-        else
+        else if(timeRemaining >= skyboxTime && skySpawned == true)
         {
             skySpawned = false;
         }        
@@ -44,9 +44,10 @@ public class Fadout : MonoBehaviour
             beach.SetBool("spawn", true);
             beach.SetBool("despawn", false);
         }
-        else
+        else if(timeRemaining >= beachTime && beachSpawned == true)
         {
             beachSpawned = false;
+            beach.SetBool("despawn", true);
             
         }
 
@@ -56,9 +57,10 @@ public class Fadout : MonoBehaviour
             ocean.SetBool("spawn", true);
             ocean.SetBool("despawn", false);
         }
-        else
+        else if(timeRemaining >= oceanTime && oceanSpawned == true)
         {
             oceanSpawned = false;
+            ocean.SetBool("despawn", true);
             
         }
 
@@ -68,9 +70,10 @@ public class Fadout : MonoBehaviour
             pier.SetBool("spawn", true);
             pier.SetBool("despawn", false);
         }
-        else
+        else if(timeRemaining >= pierTime && pierSpawned == true)
         {
             pierSpawned = false;
+            pier.SetBool("despawn", true);
             
         }
 
@@ -80,9 +83,10 @@ public class Fadout : MonoBehaviour
             rock.SetBool("spawn", true);
             rock.SetBool("despawn", false);
         }
-        else
+        else if(timeRemaining >= rockTime && rockSpawned == true)
         {
             rockSpawned = false;
+            rock.SetBool("despawn", true);
             
         }
         
