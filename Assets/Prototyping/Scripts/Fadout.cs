@@ -33,10 +33,13 @@ public class Fadout : MonoBehaviour
         if (timeRemaining <= skyboxTime)
         {
             skySpawned = true;
+            skybox.SetBool("spawn", true);
+            skybox.SetBool("despawn", false);
         }
         else if(timeRemaining >= skyboxTime && skySpawned == true)
         {
             skySpawned = false;
+            skybox.SetBool("despawn", true);
         }        
 
         if (timeRemaining <= beachTime)
