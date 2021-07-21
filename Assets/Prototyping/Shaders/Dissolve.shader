@@ -4,6 +4,7 @@
         _MainTex("Texture", 2D) = "white" {}
         _Smoothness("Smoothness", Range(0, 1)) = 0
         _Metallic("Metalness", Range(0, 1)) = 0
+        _BumpMap("Bumpmap", 2D) = "bump" {}
         [HDR] _Emission("Emission", color) = (0,0,0)
 
         [Header(Dissolve)]
@@ -24,6 +25,7 @@
             #pragma target 3.0
 
             sampler2D _MainTex;
+            sampler2D _BumpMap;
             fixed4 _Color;
 
             half _Smoothness;
@@ -40,6 +42,7 @@
             struct Input {
                 float2 uv_MainTex;
                 float2 uv_DissolveTex;
+                float2 uv_BumpMap;
             };
 
             void surf(Input i, inout SurfaceOutputStandard o) {
@@ -58,6 +61,7 @@
                 o.Metallic = _Metallic;
                 o.Smoothness = _Smoothness;
                 o.Emission = _Emission + glow;
+                o.Normal = UnpackNormal(tex2D(_BumpMap, i.uv_BumpMap));
             }
             ENDCG
         }
