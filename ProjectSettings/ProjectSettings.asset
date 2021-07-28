@@ -160,7 +160,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.Ragdoll Studios.Calm Beach
+    Android: com.RagdollStudios.CalmBeach
     Standalone: com.Ragdoll Studios.Calm Beach
   buildNumber: {}
   AndroidBundleVersionCode: 1

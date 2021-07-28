@@ -5,6 +5,8 @@
         _Smoothness("Smoothness", Range(0, 1)) = 0
         _Metallic("Metalness", Range(0, 1)) = 0
         _BumpMap("Bumpmap", 2D) = "bump" {}
+        _HeightMap("Height Map", 2D) = "white" {}
+        _HeightPower("Height Power", Range(0,.125)) = 0
         [HDR] _Emission("Emission", color) = (0,0,0)
 
         [Header(Dissolve)]
@@ -26,6 +28,8 @@
 
             sampler2D _MainTex;
             sampler2D _BumpMap;
+            sampler2D _HeightMap;
+            float _HeightPower;
             fixed4 _Color;
 
             half _Smoothness;
@@ -43,6 +47,8 @@
                 float2 uv_MainTex;
                 float2 uv_DissolveTex;
                 float2 uv_BumpMap;
+                float2 uv_HeightMap;
+                float3 viewDir;
             };
 
             void surf(Input i, inout SurfaceOutputStandard o) {
@@ -62,6 +68,7 @@
                 o.Smoothness = _Smoothness;
                 o.Emission = _Emission + glow;
                 o.Normal = UnpackNormal(tex2D(_BumpMap, i.uv_BumpMap));
+                float2 texOffset = ParallaxOffset(tex2D(_HeightMap, i.uv_HeightMap).r, _HeightPower, i.viewDir);
             }
             ENDCG
         }
