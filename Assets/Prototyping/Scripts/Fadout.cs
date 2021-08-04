@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Liminal.SDK.VR.Input;
 using Liminal.SDK.Core;
 using UnityEngine;
+using System;
 
 public class Fadout : MonoBehaviour
 {
@@ -32,32 +33,63 @@ public class Fadout : MonoBehaviour
 
     Vector3 lastPosition;
     Vector3 currentPosition;
+    public float distance;
     Quaternion lastRotation;
     float idleSeconds;
     bool isMoving = false;
+
     
+
     private void Start()
     {
         // Starts the timer automatically
         timerIsRunning = true;
         // Calls TestCondition after 0 seconds 
-        // and repeats every 10 seconds.              
+        // and repeats every 10 seconds.         
+        var RightInput = GetInput(VRInputDeviceHand.Right);
+        var LeftInput = GetInput(VRInputDeviceHand.Left);
+        Debug.Log("RightInput.Pointer.transform.position");
+        Debug.Log("LeftInput.Pointer.transform.position");
     }
 
     public void Update()
     {
-        
         lastPosition = currentPosition;
         currentPosition = PrimaryController.transform.position;
         
-        if(currentPosition == lastPosition)
+        /*if(currentPosition == lastPosition)
         {
             Debug.Log("You're not moving");
         }
         else if(currentPosition != lastPosition)
         {
             Debug.Log("You are moving");
+        }*/
+
+        
+       
+        
+            distance = Vector3.Distance(currentPosition, lastPosition);
+            print("Distance to other: " + distance);
+        
+            
+        if(distance > 0.04)
+        {
+            Debug.Log("You are moving");
         }
+        else
+        {
+            Debug.Log("You're not moving");
+        }
+
+
+        /*//calculate the direction vector between the current position and the start position
+        Vector3 direction = transform.position - originPositionsObject.transform.position;
+        //calculate its length
+        float distance = direction.magnitude;
+        //convert the float distance to the string distance: distance.ToString()
+        //and show the string in the UI-text
+        textField.text = distance.ToString();*/
 
 
         if (timeRemaining <= skyboxTime)
@@ -76,8 +108,11 @@ public class Fadout : MonoBehaviour
         }
         else if (timeRemaining >= skyboxTime && skySpawned == true)
         {
-            skySpawned = false;
-            skybox.SetBool("despawn", true);
+            if(distance >= 0.04f)
+            {
+                skySpawned = false;
+                skybox.SetBool("despawn", true);
+            }            
         }
 
         if (timeRemaining <= beachTime)
@@ -88,8 +123,12 @@ public class Fadout : MonoBehaviour
         }
         else if (timeRemaining >= beachTime && beachSpawned == true)
         {
-            beachSpawned = false;
-            beach.SetBool("despawn", true);
+            if (distance >= 0.04f)
+            {
+                beachSpawned = false;
+                beach.SetBool("despawn", true);
+            }
+             
         }
 
         if (timeRemaining <= oceanTime)
@@ -202,6 +241,11 @@ public class Fadout : MonoBehaviour
         {
             timerIsRunning = true;
         }
+    }
+
+    private object GetInput(VRInputDeviceHand right)
+    {
+        throw new NotImplementedException();
     }
 
     public void TimeBeforeChanging()
