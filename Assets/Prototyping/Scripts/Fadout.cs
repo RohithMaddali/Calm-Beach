@@ -39,6 +39,9 @@ public class Fadout : MonoBehaviour
     bool isMoving = false;
 
     
+    // Hook up if condition for ismoving and not moving
+    // Get all the bools to work with the if conditions
+
 
     private void Start()
     {
@@ -56,7 +59,7 @@ public class Fadout : MonoBehaviour
     {
         lastPosition = currentPosition;
         currentPosition = PrimaryController.transform.position;
-        
+
         /*if(currentPosition == lastPosition)
         {
             Debug.Log("You're not moving");
@@ -66,11 +69,11 @@ public class Fadout : MonoBehaviour
             Debug.Log("You are moving");
         }*/
 
-        
-       
-        
-            distance = Vector3.Distance(currentPosition, lastPosition);
-            print("Distance to other: " + distance);
+
+
+
+        distance = Vector3.Distance(currentPosition, lastPosition);
+        print("Distance to other: " + distance);
         
             
         if(distance > 0.04)
@@ -91,91 +94,170 @@ public class Fadout : MonoBehaviour
         //and show the string in the UI-text
         textField.text = distance.ToString();*/
 
+        if(distance < 0.04f)
+        {
+            if (timeRemaining <= skyboxTime)
+            {
+                //if (isMoving == false)
+                {
+                    skySpawned = true;
+                    skybox.SetBool("spawn", true);
+                    Debug.Log("Skybox spawned");
+                }
+                //else if (isMoving == true)
+                {
+                    skybox.SetBool("despawn", false);
 
-        if (timeRemaining <= skyboxTime)
-        {
-            if(isMoving == false)
-            {
-                skySpawned = true;
-                skybox.SetBool("spawn", true);                
+                    Debug.Log("Skybox despawned");
+                }
+
             }
-            else if(isMoving == true)
-            {
-                skybox.SetBool("despawn", false);
-                Debug.Log("Time section works here too");
-            }
-            
         }
-        else if (timeRemaining >= skyboxTime && skySpawned == true)
+        else if(distance > 0.04f)
         {
-            if(distance >= 0.04f)
+            //if (timeRemaining >= skyboxTime && skySpawned == true)
             {
                 skySpawned = false;
                 skybox.SetBool("despawn", true);
-            }            
+                Debug.Log("Skybox despawned in else if statement");
+            }
         }
+        
 
-        if (timeRemaining <= beachTime)
+        if (distance < 0.04f)
         {
-            beachSpawned = true;
-            beach.SetBool("spawn", true);
-            beach.SetBool("despawn", false);
+            if (timeRemaining <= beachTime)
+            {
+                beachSpawned = true;
+                beach.SetBool("spawn", true);
+                beach.SetBool("despawn", false);
+            }
         }
-        else if (timeRemaining >= beachTime && beachSpawned == true)
+        else if (distance > 0.04f)
         {
-            if (distance >= 0.04f)
+            //if (timeRemaining >= beachTime && beachSpawned == true)
             {
                 beachSpawned = false;
                 beach.SetBool("despawn", true);
             }
+        }
+
+        if (distance < 0.04f)
+        {
+            if (timeRemaining <= oceanTime)
+            {
+                oceanSpawned = true;
+                ocean.SetBool("spawn", true);
+                ocean.SetBool("despawn", false);
+            }
+        }
+        else if (distance > 0.04f)
+        {
+            //if (timeRemaining >= oceanTime && oceanSpawned == true)
+            {
+                oceanSpawned = false;
+                ocean.SetBool("despawn", true);
+            }
+        }
+
+        if (distance < 0.04f)
+        {
+            if (timeRemaining <= pierTime)
+            {
+                pierSpawned = true;
+                // pier.SetBool("spawn", true);
+                // pier.SetBool("despawn", false);
+            }
+        }
+        else if (distance > 0.04f)
+        {
+            //if (timeRemaining >= pierTime && pierSpawned == true)
+            {
+                pierSpawned = false;
+                // pier.SetBool("despawn", true);
+
+            }
+        }
+
+
+        if (distance < 0.04f)
+        {
+            if (timeRemaining <= rockTime)
+            {
+                rockSpawned = true;
+                rock.SetBool("spawn", true);
+                rock.SetBool("despawn", false);
+            }
+        }
+        else if (distance > 0.04f)
+        {
+            //if (timeRemaining >= rockTime && rockSpawned == true)
+            {
+                rockSpawned = false;
+                rock.SetBool("despawn", true);
+            }
+        }
+
+        if (distance < 0.04f)
+        {
+            if (timeRemaining <= umbrellaTime)
+            {
+                umbrellaSpawned = true;
+            }
+        }
+        else if (distance > 0.04f)
+        {
              
+            {
+                umbrellaSpawned = false;
+            }
         }
 
-        if (timeRemaining <= oceanTime)
+        if (distance < 0.04f)
         {
-            oceanSpawned = true;
-            ocean.SetBool("spawn", true);
-            ocean.SetBool("despawn", false);
-        }
-        else if (timeRemaining >= oceanTime && oceanSpawned == true)
-        {
-            oceanSpawned = false;
-            ocean.SetBool("despawn", true);
-        }
 
-        if (timeRemaining <= pierTime)
-        {
-            pierSpawned = true;
-           // pier.SetBool("spawn", true);
-           // pier.SetBool("despawn", false);
         }
-        else if (timeRemaining >= pierTime && pierSpawned == true)
+        else if (distance > 0.04f)
         {
-            pierSpawned = false;
-           // pier.SetBool("despawn", true);
 
         }
 
-        if (timeRemaining <= rockTime)
+        if (distance < 0.04f)
         {
-            rockSpawned = true;
-            rock.SetBool("spawn", true);
-            rock.SetBool("despawn", false);
+
         }
-        else if (timeRemaining >= rockTime && rockSpawned == true)
+        else if (distance > 0.04f)
         {
-            rockSpawned = false;
-            rock.SetBool("despawn", true);
+
         }
 
-        if (timeRemaining <= umbrellaTime)
+        if (distance < 0.04f)
         {
-            umbrellaSpawned = true;
+
         }
-        else
+        else if (distance > 0.04f)
         {
-            umbrellaSpawned = false;
+
         }
+
+
+
+
+
+       
+        
+
+        
+        
+
+        
+        
+
+        
+      
+
+        
+       
 
         if (timeRemaining <= birdTime)
         {
