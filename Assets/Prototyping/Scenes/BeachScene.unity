@@ -8493,6 +8493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1827002466}
   - component: {fileID: 1827002465}
+  - component: {fileID: 1827002467}
   m_Layer: 0
   m_Name: This is the main thing
   m_TagString: Untagged
@@ -8545,6 +8546,7 @@ MonoBehaviour:
   timerIsRunning: 0
   time: 0
   timeCap: 25
+  startingVol: 0
   PrimaryController: {fileID: 1569637622}
   SecondaryController: {fileID: 438484208}
   translationThreshold: 0.001
@@ -8564,6 +8566,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1827002467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827002464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a92a87fbf803a4e982530fc184e68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterMixer: {fileID: 24100000, guid: 718d31b29fb6a56408d976d5af8a27da, type: 2}
+  wavesVol: -20
+  windVol: -23
+  fireVol: -23
+  SynthChordsVol: -1
+  arpMelodyVol: -5
+  pianoMelodyVol: -13
+  binuralBeatVol: -34
+  lerpMod: 0.11
 --- !u!1 &1989269814 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: a1a2f73472789da4d91cd88082e03476,

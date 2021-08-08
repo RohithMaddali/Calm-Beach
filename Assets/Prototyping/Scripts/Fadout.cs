@@ -14,6 +14,8 @@ public class Fadout : MonoBehaviour
     public int skyboxTime, beachTime, oceanTime, pierTime, rockTime, umbrellaTime, birdTime, wallTime, rainbowTime, everythingSpawnedTime;
     public bool skySpawned, beachSpawned, oceanSpawned, pierSpawned, rockSpawned, umbrellaSpawned, birdSpawned, wallSpawned, rainbowSpawned, everythingSpawned;
 
+    AudioMixerManager mixerManager;
+    
     //Timer variables
     //Timer starts at 20 secs, after 10 secs passed, spawn sun, next 10 secs, spawn beach.
     //Timer starts at 20 secs, after 10 secs passed, spawn sun, if we untick the sun box, despawn sun and add 10 seconds.
@@ -23,7 +25,7 @@ public class Fadout : MonoBehaviour
     private int addTimer = 10;
     public float timeCap;
     private float timeCounter = 3f;
-    
+    [HideInInspector] public float startingVol = -82f;
 
     public VRAvatarController PrimaryController;
     public VRAvatarController SecondaryController;
@@ -45,6 +47,7 @@ public class Fadout : MonoBehaviour
 
     private void Start()
     {
+        mixerManager = GetComponent<AudioMixerManager>();
         // Starts the timer automatically
         timerIsRunning = true;
         // Calls TestCondition after 0 seconds 
@@ -117,6 +120,7 @@ public class Fadout : MonoBehaviour
         {
             //if (timeRemaining >= skyboxTime && skySpawned == true)
             {
+
                 skySpawned = false;
                 skybox.SetBool("despawn", true);
                 Debug.Log("Skybox despawned in else if statement");
@@ -128,9 +132,16 @@ public class Fadout : MonoBehaviour
         {
             if (timeRemaining <= beachTime)
             {
+                Debug.Log("beach time");
+                mixerManager.WindVolumeControl(true);
                 beachSpawned = true;
                 beach.SetBool("spawn", true);
                 beach.SetBool("despawn", false);
+            }
+            else
+            {
+                Debug.Log("no beach");
+                mixerManager.WindVolumeControl(false);
             }
         }
         else if (distance > 0.04f)
@@ -146,9 +157,14 @@ public class Fadout : MonoBehaviour
         {
             if (timeRemaining <= oceanTime)
             {
+                mixerManager.WavesVolumeControl(true);
                 oceanSpawned = true;
                 ocean.SetBool("spawn", true);
                 ocean.SetBool("despawn", false);
+            }
+            else
+            {
+                mixerManager.WavesVolumeControl(false);
             }
         }
         else if (distance > 0.04f)
@@ -165,8 +181,15 @@ public class Fadout : MonoBehaviour
             if (timeRemaining <= pierTime)
             {
                 pierSpawned = true;
+                mixerManager.SynthChordsVolumeControl(true);
+                mixerManager.BinuralBeatVolumeControl(true);
                 // pier.SetBool("spawn", true);
                 // pier.SetBool("despawn", false);
+            }
+            else
+            {
+                mixerManager.SynthChordsVolumeControl(false);
+                mixerManager.BinuralBeatVolumeControl(false);
             }
         }
         else if (distance > 0.04f)
@@ -184,9 +207,14 @@ public class Fadout : MonoBehaviour
         {
             if (timeRemaining <= rockTime)
             {
+                mixerManager.ArpMelodyVolumeControl(true);
                 rockSpawned = true;
                 rock.SetBool("spawn", true);
                 rock.SetBool("despawn", false);
+            }
+            else
+            {
+                mixerManager.ArpMelodyVolumeControl(false);
             }
         }
         else if (distance > 0.04f)
@@ -202,7 +230,12 @@ public class Fadout : MonoBehaviour
         {
             if (timeRemaining <= umbrellaTime)
             {
+                mixerManager.PianoMelodyVolumeControl(true);
                 umbrellaSpawned = true;
+            }
+            else
+            {
+                mixerManager.PianoMelodyVolumeControl(false);
             }
         }
         else if (distance > 0.04f)
