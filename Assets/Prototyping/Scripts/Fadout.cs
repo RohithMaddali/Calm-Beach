@@ -101,35 +101,23 @@ public class Fadout : MonoBehaviour
         if(distance < 0.04f)
         {
             if (timeRemaining <= skyboxTime)
-            {
-                //if (isMoving == false)
-                {
+            {              
                     skySpawned = true;
                     skybox.SetBool("Spawn", true);
                     skybox.SetBool("Despawn", false);
-                    Debug.Log("Skybox spawned");
-                }
-
             }
-        }
-        else if(distance > 0.04f)
-        {
-            //if (timeRemaining >= skyboxTime && skySpawned == true)
+            else if(timeRemaining > skyboxTime)
             {
-
                 skySpawned = false;
                 skybox.SetBool("Despawn", true);
                 Debug.Log("Skybox despawned in else if statement");
             }
         }
-        else if (distance > 0.04f)
+        else if(distance > 0.04f && skySpawned == true)
         {
-            //if (timeRemaining >= beachTime && beachSpawned == true)
-            {
-                skySpawned = false;
-                skybox.SetBool("Despawn", true);
-            }
+            timeRemaining += addTimer;
         }
+
 
         if (distance < 0.04f)
         {
@@ -140,19 +128,18 @@ public class Fadout : MonoBehaviour
                 ocean.SetBool("Spawn", true);
                 ocean.SetBool("Despawn", false);
             }
-            else
-            {
-                mixerManager.WavesVolumeControl(false);
-            }
-        }
-        else if (distance > 0.04f)
-        {
-            //if (timeRemaining >= oceanTime && oceanSpawned == true)
+            else if(timeRemaining > oceanTime)
             {
                 oceanSpawned = false;
-                ocean.SetBool("despawn", true);
-            }
+                ocean.SetBool("Despawn", true);
+                mixerManager.WavesVolumeControl(false);
+            }            
         }
+        else if (distance > 0.04f && oceanSpawned == true)
+        {
+            timeRemaining += addTimer;
+        }
+
 
         if (distance < 0.04f)
         {
@@ -164,20 +151,17 @@ public class Fadout : MonoBehaviour
                 pier.SetBool("Spawn", true);
                 pier.SetBool("Despawn", false);
             }
-            else
+            else if (timeRemaining > pierTime)
             {
+                pierSpawned = false;
+                pier.SetBool("Despawn", true);
                 mixerManager.SynthChordsVolumeControl(false);
                 mixerManager.BinuralBeatVolumeControl(false);
             }
         }
-        else if (distance > 0.04f)
+        else if (distance > 0.04f && pierSpawned == true)
         {
-            //if (timeRemaining >= pierTime && pierSpawned == true)
-            {
-                pierSpawned = false;
-                pier.SetBool("Despawn", true);
-
-            }
+            timeRemaining += addTimer;
         }
 
 
@@ -190,18 +174,16 @@ public class Fadout : MonoBehaviour
                 boat.SetBool("Spawn", true);
                 boat.SetBool("Despawn", false);
             }
-            else
-            {
-                mixerManager.ArpMelodyVolumeControl(false);
-            }
-        }
-        else if (distance > 0.04f)
-        {
-            //if (timeRemaining >= rockTime && rockSpawned == true)
+            else if(timeRemaining > boatTime)
             {
                 boatSpawned = false;
                 boat.SetBool("Despawn", true);
+                mixerManager.ArpMelodyVolumeControl(false);
             }
+        }
+        else if (distance > 0.04f && boatSpawned == true)
+        {
+            timeRemaining += addTimer;
         }
 
         if (distance < 0.04f)
@@ -214,19 +196,17 @@ public class Fadout : MonoBehaviour
                 campfire.SetBool("Despawn", false);
                 cf.SetActive(true);
             }
-            else
-            {
-                //mixerManager.ArpMelodyVolumeControl(false);
-            }
-        }
-        else if (distance > 0.04f)
-        {
-            //if (timeRemaining >= rockTime && rockSpawned == true)
+            else if(timeRemaining > campfireTime)
             {
                 cf.SetActive(false);
                 campfireSpawned = false;
                 campfire.SetBool("Despawn", true);
+                //mixerManager.ArpMelodyVolumeControl(false);
             }
+        }
+        else if (distance > 0.04f && campfireSpawned == true)
+        {
+            timeRemaining += addTimer;
         }
 
         if (timeRemaining <= everythingSpawnedTime)
