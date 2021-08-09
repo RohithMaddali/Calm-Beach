@@ -10,9 +10,10 @@ using System;
 public class Fadout : MonoBehaviour
 {
     //Spawning/Animating variables
-    public Animator skybox, beach, ocean, pier, rock, umbrella, bird, wall, rainbow;
-    public int skyboxTime, beachTime, oceanTime, pierTime, rockTime, umbrellaTime, birdTime, wallTime, rainbowTime, everythingSpawnedTime;
-    public bool skySpawned, beachSpawned, oceanSpawned, pierSpawned, rockSpawned, umbrellaSpawned, birdSpawned, wallSpawned, rainbowSpawned, everythingSpawned;
+    public Animator skybox, ocean, pier, boat, campfire;
+    public int skyboxTime, oceanTime, pierTime, boatTime, campfireTime, everythingSpawnedTime;
+    public bool skySpawned, oceanSpawned, pierSpawned, boatSpawned, campfireSpawned, everythingSpawned;
+    public GameObject cf;
 
     AudioMixerManager mixerManager;
     
@@ -104,14 +105,9 @@ public class Fadout : MonoBehaviour
                 //if (isMoving == false)
                 {
                     skySpawned = true;
-                    skybox.SetBool("spawn", true);
+                    skybox.SetBool("Spawn", true);
+                    skybox.SetBool("Despawn", false);
                     Debug.Log("Skybox spawned");
-                }
-                //else if (isMoving == true)
-                {
-                    skybox.SetBool("despawn", false);
-
-                    Debug.Log("Skybox despawned");
                 }
 
             }
@@ -122,34 +118,16 @@ public class Fadout : MonoBehaviour
             {
 
                 skySpawned = false;
-                skybox.SetBool("despawn", true);
+                skybox.SetBool("Despawn", true);
                 Debug.Log("Skybox despawned in else if statement");
-            }
-        }
-        
-
-        if (distance < 0.04f)
-        {
-            if (timeRemaining <= beachTime)
-            {
-                Debug.Log("beach time");
-                mixerManager.WindVolumeControl(true);
-                beachSpawned = true;
-                beach.SetBool("spawn", true);
-                beach.SetBool("despawn", false);
-            }
-            else
-            {
-                Debug.Log("no beach");
-                mixerManager.WindVolumeControl(false);
             }
         }
         else if (distance > 0.04f)
         {
             //if (timeRemaining >= beachTime && beachSpawned == true)
             {
-                beachSpawned = false;
-                beach.SetBool("despawn", true);
+                skySpawned = false;
+                skybox.SetBool("Despawn", true);
             }
         }
 
@@ -159,8 +137,8 @@ public class Fadout : MonoBehaviour
             {
                 mixerManager.WavesVolumeControl(true);
                 oceanSpawned = true;
-                ocean.SetBool("spawn", true);
-                ocean.SetBool("despawn", false);
+                ocean.SetBool("Spawn", true);
+                ocean.SetBool("Despawn", false);
             }
             else
             {
@@ -183,8 +161,8 @@ public class Fadout : MonoBehaviour
                 pierSpawned = true;
                 mixerManager.SynthChordsVolumeControl(true);
                 mixerManager.BinuralBeatVolumeControl(true);
-                // pier.SetBool("spawn", true);
-                // pier.SetBool("despawn", false);
+                pier.SetBool("Spawn", true);
+                pier.SetBool("Despawn", false);
             }
             else
             {
@@ -197,7 +175,7 @@ public class Fadout : MonoBehaviour
             //if (timeRemaining >= pierTime && pierSpawned == true)
             {
                 pierSpawned = false;
-                // pier.SetBool("despawn", true);
+                pier.SetBool("Despawn", true);
 
             }
         }
@@ -205,12 +183,12 @@ public class Fadout : MonoBehaviour
 
         if (distance < 0.04f)
         {
-            if (timeRemaining <= rockTime)
+            if (timeRemaining <= boatTime)
             {
                 mixerManager.ArpMelodyVolumeControl(true);
-                rockSpawned = true;
-                rock.SetBool("spawn", true);
-                rock.SetBool("despawn", false);
+                boatSpawned = true;
+                boat.SetBool("Spawn", true);
+                boat.SetBool("Despawn", false);
             }
             else
             {
@@ -221,102 +199,34 @@ public class Fadout : MonoBehaviour
         {
             //if (timeRemaining >= rockTime && rockSpawned == true)
             {
-                rockSpawned = false;
-                rock.SetBool("despawn", true);
+                boatSpawned = false;
+                boat.SetBool("Despawn", true);
             }
         }
 
         if (distance < 0.04f)
         {
-            if (timeRemaining <= umbrellaTime)
+            if (timeRemaining <= campfireTime)
             {
-                mixerManager.PianoMelodyVolumeControl(true);
-                umbrellaSpawned = true;
+                //mixerManager.ArpMelodyVolumeControl(true);
+                campfireSpawned = true;
+                campfire.SetBool("Spawn", true);
+                campfire.SetBool("Despawn", false);
+                cf.SetActive(true);
             }
             else
             {
-                mixerManager.PianoMelodyVolumeControl(false);
+                //mixerManager.ArpMelodyVolumeControl(false);
             }
         }
         else if (distance > 0.04f)
         {
-             
+            //if (timeRemaining >= rockTime && rockSpawned == true)
             {
-                umbrellaSpawned = false;
+                cf.SetActive(false);
+                campfireSpawned = false;
+                campfire.SetBool("Despawn", true);
             }
-        }
-
-        if (distance < 0.04f)
-        {
-
-        }
-        else if (distance > 0.04f)
-        {
-
-        }
-
-        if (distance < 0.04f)
-        {
-
-        }
-        else if (distance > 0.04f)
-        {
-
-        }
-
-        if (distance < 0.04f)
-        {
-
-        }
-        else if (distance > 0.04f)
-        {
-
-        }
-
-
-
-
-
-       
-        
-
-        
-        
-
-        
-        
-
-        
-      
-
-        
-       
-
-        if (timeRemaining <= birdTime)
-        {
-            birdSpawned = true;
-        }
-        else
-        {
-            birdSpawned = false;
-        }
-
-        if (timeRemaining <= wallTime)
-        {
-            wallSpawned = true;
-        }
-        else
-        {
-            wallSpawned = false;
-        }
-
-        if (timeRemaining <= rainbowTime)
-        {
-            rainbowSpawned = true;
-        }
-        else
-        {
-            rainbowSpawned = false;
         }
 
         if (timeRemaining <= everythingSpawnedTime)

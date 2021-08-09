@@ -99,7 +99,7 @@ Material:
     - _Surfacehightlightsize: 0
     - _Tessellation: 0.01
     - _Tiling: 0.955
-    - _Transparency: 0.695
+    - _Transparency: 1
     - _USE_VC_INTERSECTION: 0
     - _Unlit: 0
     - _UseIntersectionFoam: 1
