@@ -296,18 +296,18 @@ public class Fadout : MonoBehaviour
             {
                 timeRemaining -= Time.deltaTime;
             }
-            else
+            /*else
             {
                 Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
-            }
+            }*/
         }
 
-        if (!timerIsRunning)
+        /*if (!timerIsRunning)
         {
             timeRemaining += Time.deltaTime;
-        }
+        }*/
 
         if (timeRemaining >= timeCap)
         {
