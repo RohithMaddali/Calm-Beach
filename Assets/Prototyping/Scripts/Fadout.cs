@@ -10,9 +10,9 @@ using System;
 public class Fadout : MonoBehaviour
 {
     //Spawning/Animating variables
-    public Animator skybox, ocean, pier, boat, campfire;
-    public int skyboxTime, oceanTime, pierTime, boatTime, campfireTime, everythingSpawnedTime;
-    public bool skySpawned, oceanSpawned, pierSpawned, boatSpawned, campfireSpawned, everythingSpawned;
+    public Animator skybox, ocean,rocks, pier, boat,sailBoat,rainbow, campfire;
+    public int skyboxTime, oceanTime,rocksTime, pierTime, boatTime, campfireTime,sailBoatTime,rainbowTime, everythingSpawnedTime;
+    public bool skySpawned, oceanSpawned,rocksSpawned, pierSpawned, boatSpawned, campfireSpawned,sailBoatSpanwed,rainbowSpawned, everythingSpawned;
     public GameObject cf;
 
     AudioMixerManager mixerManager;
@@ -140,6 +140,27 @@ public class Fadout : MonoBehaviour
             timeRemaining += addTimer;
         }
 
+        if (distance < 0.04f)
+        {
+            if (timeRemaining <= rocksTime)
+            {
+                //mixerManager.WavesVolumeControl(true);
+                rocksSpawned = true;
+                rocks.SetBool("Spawn", true);
+                rocks.SetBool("Despawn", false);
+            }
+            else if (timeRemaining > oceanTime)
+            {
+                rocksSpawned = false;
+                rocks.SetBool("Despawn", true);
+                mixerManager.WavesVolumeControl(false);
+            }
+        }
+        else if (distance > 0.04f && rocksSpawned == true)
+        {
+            timeRemaining += addTimer;
+        }
+
 
         if (distance < 0.04f)
         {
@@ -205,6 +226,52 @@ public class Fadout : MonoBehaviour
             }
         }
         else if (distance > 0.04f && campfireSpawned == true)
+        {
+            timeRemaining += addTimer;
+        }
+
+        if (distance < 0.04f)
+        {
+            if (timeRemaining <= sailBoatTime)
+            {
+                //mixerManager.WavesVolumeControl(true);
+                sailBoatSpanwed = true;
+                sailBoat.SetBool("Spawn", true);
+                sailBoat.SetBool("Despawn", false);
+            }
+            else if (timeRemaining > oceanTime)
+            {
+                sailBoatSpanwed = false;
+                sailBoat.SetBool("Despawn", true);
+                //mixerManager.WavesVolumeControl(false);
+            }
+        }
+        else if (distance > 0.04f && sailBoatSpanwed == true)
+        {
+            timeRemaining += addTimer;
+        }
+
+        if (distance < 0.04f)
+        {
+            if (timeRemaining <= rainbowTime)
+            {
+                //mixerManager.WavesVolumeControl(true);
+                rainbowSpawned = true;
+                rainbow.SetBool("Spawn", true);
+                rainbow.SetBool("Despawn", false);
+            }
+            else if (timeRemaining > rainbowTime)
+            {
+                rainbowSpawned = false;
+                rainbow.SetBool("Despawn", true);
+                //mixerManager.WavesVolumeControl(false);
+            }
+        }
+        else if (distance > 0.04f && rainbowSpawned == true)
+        {
+            timeRemaining += addTimer;
+        }
+        else if (distance > 0.04f && oceanSpawned == true)
         {
             timeRemaining += addTimer;
         }
