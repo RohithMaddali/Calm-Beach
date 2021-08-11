@@ -5360,124 +5360,124 @@ AnimationClip:
     data: pillar
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 1
     messageOptions: 0
   - time: 6.4583335
-    functionName: Sequence
-    data: pillar
+    functionName: IndexReset
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 2
     messageOptions: 0
   - time: 7.2916665
     functionName: Sequence
     data: pillar
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 3
     messageOptions: 0
   - time: 8.458333
     functionName: Sequence
     data: support
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 4
     messageOptions: 0
   - time: 9.541667
     functionName: Sequence
     data: support
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 5
     messageOptions: 0
   - time: 11.041667
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 6
     messageOptions: 0
   - time: 11.541667
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 7
     messageOptions: 0
   - time: 12.291667
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 8
     messageOptions: 0
   - time: 13.041667
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 9
     messageOptions: 0
   - time: 13.75
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 10
     messageOptions: 0
   - time: 14.625
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 11
     messageOptions: 0
   - time: 15.291667
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 12
     messageOptions: 0
   - time: 16
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 13
     messageOptions: 0
   - time: 16.833334
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 14
     messageOptions: 0
   - time: 17.5
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 15
     messageOptions: 0
   - time: 18.375
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 16
     messageOptions: 0
   - time: 19
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 17
     messageOptions: 0
   - time: 19.708334
     functionName: Sequence
     data: plank
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 18
     messageOptions: 0
