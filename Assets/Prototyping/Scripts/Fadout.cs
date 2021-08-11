@@ -12,6 +12,8 @@ public class Fadout : MonoBehaviour
     //Spawning/Animating variables
     public Animator skybox, ocean,rocks, pier, boat,sailBoat,rainbow, campfire;
     public int skyboxTime, oceanTime,rocksTime, pierTime, boatTime, campfireTime,sailBoatTime,rainbowTime, everythingSpawnedTime;
+    public int skyboxTimeInc, oceanTimeInc, rocksTimeInc, pierTimeInc, boatTimeInc, campfireTimeInc, sailBoatTimeInc, rainbowTimeInc, everythingSpawnedTimeInc;
+    public bool skyBoxCap, oceanCap, rockCap, pierCap, boatCap, sailBoatCap, campCap, rainbowCap;
     public bool skySpawned, oceanSpawned,rocksSpawned, pierSpawned, boatSpawned, campfireSpawned,sailBoatSpanwed,rainbowSpawned, everythingSpawned;
     public GameObject cf;
 
@@ -27,13 +29,14 @@ public class Fadout : MonoBehaviour
     public float timeCap;
     private float timeCounter = 3f;
     [HideInInspector] public float startingVol = -82f;
+    [SerializeField] private int spawnNumber;
 
     public VRAvatarController PrimaryController;
     public VRAvatarController SecondaryController;
 
     public float translationThreshold = 0.001f;
     public float rotationThreshold = 0.001f;
-
+    public float distanceThreshold;
     Vector3 lastPosition;
     Vector3 currentPosition;
     public float distance;
@@ -68,13 +71,24 @@ public class Fadout : MonoBehaviour
         SailBoatSpawn();
         RainbowSpawn();
         MovementCheck();
+
+        if (timeRemaining <= everythingSpawnedTime)
+        {
+            everythingSpawned = true;
+        }
+        else
+        {
+            everythingSpawned = false;
+        }
     }
     void SkyboxSpawn()
     {
-        if (distance < 0.04f)
+        if (distance < distanceThreshold)
         {
+            skyBoxCap = false;
             if (timeRemaining <= skyboxTime)
             {
+                spawnNumber = 1;
                 mixerManager.SynthChordsVolumeControl(true);
                 mixerManager.WorldAppear();
                 skySpawned = true;
@@ -86,20 +100,22 @@ public class Fadout : MonoBehaviour
                 mixerManager.SynthChordsVolumeControl(false);
                 skySpawned = false;
                 skybox.SetBool("Despawn", true);
-                Debug.Log("Skybox despawned in else if statement");
             }
         }
-        else if (distance > 0.04f && skySpawned == true)
+        else if (distance > distanceThreshold && skySpawned == true && skyBoxCap == false && spawnNumber == 1)
         {
-            timeRemaining += addTimer;
+            skyBoxCap = true;
+            timeRemaining += skyboxTimeInc;
         }
     }
     void OceanSpawn()
     {
-        if (distance < 0.04f)
+        if (distance < distanceThreshold)
         {
+            oceanCap = false;
             if (timeRemaining <= oceanTime)
             {
+                spawnNumber = 2;
                 mixerManager.WavesVolumeControl(true);
                 mixerManager.BinuralBeatVolumeControl(true);
                 oceanSpawned = true;
@@ -114,17 +130,20 @@ public class Fadout : MonoBehaviour
                 mixerManager.BinuralBeatVolumeControl(false);
             }
         }
-        else if (distance > 0.04f && oceanSpawned == true)
+        else if (distance > distanceThreshold && oceanSpawned == true && oceanCap == false && spawnNumber == 2)
         {
-            timeRemaining += addTimer;
+            oceanCap = true;
+            timeRemaining += oceanTimeInc;
         }
     }
     void RocksSpawn()
     {
-        if (distance < 0.04f)
+        if (distance < distanceThreshold)
         {
+            rockCap = false;
             if (timeRemaining <= rocksTime)
             {
+                spawnNumber = 3;
                 mixerManager.WindVolumeControl(true);
                 rocksSpawned = true;
                 rocks.SetBool("Spawn", true);
@@ -136,17 +155,20 @@ public class Fadout : MonoBehaviour
                 rocksSpawned = false;
             }
         }
-        else if (distance > 0.04f && rocksSpawned == true)
+        else if (distance > distanceThreshold && rocksSpawned == true && rockCap == false && spawnNumber == 3)
         {
-            timeRemaining += addTimer;
+            rockCap = true;
+            timeRemaining += rocksTimeInc;
         }
     }
     void PierSpawn()
     {
-        if (distance < 0.04f)
+        if (distance < distanceThreshold)
         {
+            pierCap = false;
             if (timeRemaining <= pierTime)
             {
+                spawnNumber = 4;
                 pierSpawned = true;
                 mixerManager.ArpMelodyVolumeControl(true);
                 pier.SetBool("Spawn", true);
@@ -160,17 +182,20 @@ public class Fadout : MonoBehaviour
 
             }
         }
-        else if (distance > 0.04f && pierSpawned == true)
+        else if (distance > distanceThreshold && pierSpawned == true && pierCap == false && spawnNumber == 4)
         {
-            timeRemaining += addTimer;
+            pierCap = true;
+            timeRemaining += pierTimeInc;
         }
     }
     void BoatSpawn()
     {
-        if (distance < 0.04f)
+        if (distance < distanceThreshold)
         {
+            boatCap = false;
             if (timeRemaining <= boatTime)
             {
+                spawnNumber = 5;
                 mixerManager.BoatVolumeControl(true);
                 mixerManager.PianoMelodyVolumeControl(true);
                 boatSpawned = true;
@@ -186,17 +211,20 @@ public class Fadout : MonoBehaviour
 
             }
         }
-        else if (distance > 0.04f && boatSpawned == true)
+        else if (distance > distanceThreshold && boatSpawned == true && boatCap == false && spawnNumber == 5)
         {
-            timeRemaining += addTimer;
+            boatCap = true;
+            timeRemaining += boatTimeInc;
         }
     }
     void CampFireSpawn()
     {
-        if (distance < 0.04f)
+        if (distance < distanceThreshold)
         {
+            campCap = false;
             if (timeRemaining <= campfireTime)
             {
+                spawnNumber = 6;
                 mixerManager.CampFireVolumeControl(true);
                 campfireSpawned = true;
                 campfire.SetBool("Spawn", true);
@@ -212,17 +240,20 @@ public class Fadout : MonoBehaviour
 
             }
         }
-        else if (distance > 0.04f && campfireSpawned == true)
+        else if (distance > distanceThreshold && campfireSpawned == true && campCap == false && spawnNumber == 6)
         {
-            timeRemaining += addTimer;
+            campCap = true;
+            timeRemaining += campfireTimeInc;
         }
     }
     void SailBoatSpawn()
     {
-        if (distance < 0.04f)
+        if (distance < distanceThreshold)
         {
+            sailBoatCap = false;
             if (timeRemaining <= sailBoatTime)
             {
+                spawnNumber = 7;
                 sailBoatSpanwed = true;
                 sailBoat.SetBool("Spawn", true);
                 sailBoat.SetBool("Despawn", false);
@@ -233,17 +264,20 @@ public class Fadout : MonoBehaviour
                 sailBoat.SetBool("Despawn", true);
             }
         }
-        else if (distance > 0.04f && sailBoatSpanwed == true)
+        else if (distance > distanceThreshold && sailBoatSpanwed == true && sailBoatCap == false && spawnNumber == 7)
         {
-            timeRemaining += addTimer;
+            sailBoatCap = true;
+            timeRemaining += sailBoatTimeInc;
         }
     }
     void RainbowSpawn()
     {
-        if (distance < 0.04f)
+        if (distance < distanceThreshold)
         {
+            rainbowCap = false;
             if (timeRemaining <= rainbowTime)
             {
+                spawnNumber = 8;
                 rainbowSpawned = true;
                 rainbow.SetBool("Spawn", true);
                 rainbow.SetBool("Despawn", false);
@@ -254,24 +288,11 @@ public class Fadout : MonoBehaviour
                 rainbow.SetBool("Despawn", true);
             }
         }
-        else if (distance > 0.04f && rainbowSpawned == true)
+        else if (distance > distanceThreshold && rainbowSpawned == true && rainbowCap == false && spawnNumber == 8)
         {
-            timeRemaining += addTimer;
-        }
-        else if (distance > 0.04f && oceanSpawned == true)
-        {
-            timeRemaining += addTimer;
-        }
-
-        if (timeRemaining <= everythingSpawnedTime)
-        {
-            everythingSpawned = true;
-        }
-        else
-        {
-            everythingSpawned = false;
-        }
-
+            rainbowCap = true;
+            timeRemaining += rainbowTimeInc;
+        }      
     }
     void MovementCheck()
     {
