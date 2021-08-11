@@ -8,14 +8,17 @@ public class AudioMixerManager : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField]
     AudioMixer masterMixer;
+    [SerializeField] AudioClip worldAppear;
+    [SerializeField] AudioSource source;
     [SerializeField]
-    float wavesVol,windVol, fireVol, SynthChordsVol, arpMelodyVol, pianoMelodyVol,binuralBeatVol;
+    float wavesVol, windVol, fireVol, SynthChordsVol, arpMelodyVol, pianoMelodyVol, binuralBeatVol,boatVol;
     float startVol = -80;
     [Header("Fade Time Settings")]
     [SerializeField]
     [Range(0f, 2f)]
-    float lerpMod;
-    float[] lerp = new float[6];
+    float lerpMod = 0.5f;
+    float[] lerp = new float[7];
+    bool doOnce;
 
     private void Start()
     {
@@ -104,6 +107,40 @@ public class AudioMixerManager : MonoBehaviour
         {
             masterMixer.SetFloat("BinuralBeatVol", lerp[5]);
             lerp[5] = Mathf.Lerp(lerp[5], startVol, lerpMod * Time.fixedDeltaTime);
+        }
+    }
+    public void CampFireVolumeControl(bool isActive)
+    {
+        if (isActive)
+        {
+            masterMixer.SetFloat("CampFireVol", lerp[6]);
+            lerp[6] = Mathf.Lerp(lerp[6], fireVol, lerpMod * Time.fixedDeltaTime);
+        }
+        else
+        {
+            masterMixer.SetFloat("CampFireVol", lerp[6]);
+            lerp[6] = Mathf.Lerp(lerp[6], startVol, lerpMod * Time.fixedDeltaTime);
+        }
+    }
+    public void BoatVolumeControl(bool isActive)
+    {
+        if (isActive)
+        {
+            masterMixer.SetFloat("BoatVol", lerp[6]);
+            lerp[6] = Mathf.Lerp(lerp[6], boatVol, lerpMod * Time.fixedDeltaTime);
+        }
+        else
+        {
+            masterMixer.SetFloat("BoatVol", lerp[6]);
+            lerp[6] = Mathf.Lerp(lerp[6], startVol, lerpMod * Time.fixedDeltaTime);
+        }
+    }
+    public void WorldAppear()
+    {
+        if (!source.isPlaying && doOnce)
+        {
+            source.PlayOneShot(worldAppear);
+            doOnce = true;
         }
     }
 }

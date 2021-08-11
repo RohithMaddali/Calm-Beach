@@ -41,11 +41,9 @@ public class Fadout : MonoBehaviour
     float idleSeconds;
     bool isMoving = false;
 
-    
+ 
     // Hook up if condition for ismoving and not moving
     // Get all the bools to work with the if conditions
-
-
     private void Start()
     {
         mixerManager = GetComponent<AudioMixerManager>();
@@ -58,117 +56,99 @@ public class Fadout : MonoBehaviour
         Debug.Log("RightInput.Pointer.transform.position");
         Debug.Log("LeftInput.Pointer.transform.position");
     }
-
     public void Update()
     {
-        lastPosition = currentPosition;
-        currentPosition = PrimaryController.transform.position;
-
-        /*if(currentPosition == lastPosition)
-        {
-            Debug.Log("You're not moving");
-        }
-        else if(currentPosition != lastPosition)
-        {
-            Debug.Log("You are moving");
-        }*/
-
-
-
-
-        distance = Vector3.Distance(currentPosition, lastPosition);
-        print("Distance to other: " + distance);
-        
-            
-        if(distance > 0.04)
-        {
-            Debug.Log("You are moving");
-        }
-        else
-        {
-            Debug.Log("You're not moving");
-        }
-
-
-        /*//calculate the direction vector between the current position and the start position
-        Vector3 direction = transform.position - originPositionsObject.transform.position;
-        //calculate its length
-        float distance = direction.magnitude;
-        //convert the float distance to the string distance: distance.ToString()
-        //and show the string in the UI-text
-        textField.text = distance.ToString();*/
-
-        if(distance < 0.04f)
+        MovementCheck();
+        SkyboxSpawn();
+        OceanSpawn();
+        RocksSpawn();
+        PierSpawn();
+        BoatSpawn();
+        CampFireSpawn();
+        SailBoatSpawn();
+        RainbowSpawn();
+        MovementCheck();
+    }
+    void SkyboxSpawn()
+    {
+        if (distance < 0.04f)
         {
             if (timeRemaining <= skyboxTime)
-            {              
-                    skySpawned = true;
-                    skybox.SetBool("Spawn", true);
-                    skybox.SetBool("Despawn", false);
-            }
-            else if(timeRemaining > skyboxTime)
             {
+                mixerManager.SynthChordsVolumeControl(true);
+                mixerManager.WorldAppear();
+                skySpawned = true;
+                skybox.SetBool("Spawn", true);
+                skybox.SetBool("Despawn", false);
+            }
+            else if (timeRemaining > skyboxTime)
+            {
+                mixerManager.SynthChordsVolumeControl(false);
                 skySpawned = false;
                 skybox.SetBool("Despawn", true);
                 Debug.Log("Skybox despawned in else if statement");
             }
         }
-        else if(distance > 0.04f && skySpawned == true)
+        else if (distance > 0.04f && skySpawned == true)
         {
             timeRemaining += addTimer;
         }
-
-
+    }
+    void OceanSpawn()
+    {
         if (distance < 0.04f)
         {
             if (timeRemaining <= oceanTime)
             {
                 mixerManager.WavesVolumeControl(true);
+                mixerManager.BinuralBeatVolumeControl(true);
                 oceanSpawned = true;
                 ocean.SetBool("Spawn", true);
                 ocean.SetBool("Despawn", false);
             }
-            else if(timeRemaining > oceanTime)
+            else if (timeRemaining > oceanTime)
             {
                 oceanSpawned = false;
                 ocean.SetBool("Despawn", true);
                 mixerManager.WavesVolumeControl(false);
-            }            
+                mixerManager.BinuralBeatVolumeControl(false);
+            }
         }
         else if (distance > 0.04f && oceanSpawned == true)
         {
             timeRemaining += addTimer;
         }
-
+    }
+    void RocksSpawn()
+    {
         if (distance < 0.04f)
         {
             if (timeRemaining <= rocksTime)
             {
-                //mixerManager.WavesVolumeControl(true);
+                mixerManager.WindVolumeControl(true);
                 rocksSpawned = true;
                 rocks.SetBool("Spawn", true);
                 rocks.SetBool("Despawn", false);
             }
-            else if (timeRemaining > oceanTime)
+            else if (timeRemaining > rocksTime)
             {
+                mixerManager.WindVolumeControl(false);
                 rocksSpawned = false;
-                rocks.SetBool("Despawn", true);
-                mixerManager.WavesVolumeControl(false);
             }
         }
         else if (distance > 0.04f && rocksSpawned == true)
         {
             timeRemaining += addTimer;
         }
-
-
+    }
+    void PierSpawn()
+    {
         if (distance < 0.04f)
         {
             if (timeRemaining <= pierTime)
             {
                 pierSpawned = true;
-                mixerManager.SynthChordsVolumeControl(true);
-                mixerManager.BinuralBeatVolumeControl(true);
+                mixerManager.ArpMelodyVolumeControl(true);
                 pier.SetBool("Spawn", true);
                 pier.SetBool("Despawn", false);
             }
@@ -176,86 +156,94 @@ public class Fadout : MonoBehaviour
             {
                 pierSpawned = false;
                 pier.SetBool("Despawn", true);
-                mixerManager.SynthChordsVolumeControl(false);
-                mixerManager.BinuralBeatVolumeControl(false);
+                mixerManager.ArpMelodyVolumeControl(false);
+
             }
         }
         else if (distance > 0.04f && pierSpawned == true)
         {
             timeRemaining += addTimer;
         }
-
-
+    }
+    void BoatSpawn()
+    {
         if (distance < 0.04f)
         {
             if (timeRemaining <= boatTime)
             {
-                mixerManager.ArpMelodyVolumeControl(true);
+                mixerManager.BoatVolumeControl(true);
+                mixerManager.PianoMelodyVolumeControl(true);
                 boatSpawned = true;
                 boat.SetBool("Spawn", true);
                 boat.SetBool("Despawn", false);
             }
-            else if(timeRemaining > boatTime)
+            else if (timeRemaining > boatTime)
             {
+                mixerManager.BoatVolumeControl(false);
+                mixerManager.PianoMelodyVolumeControl(false);
                 boatSpawned = false;
                 boat.SetBool("Despawn", true);
-                mixerManager.ArpMelodyVolumeControl(false);
+
             }
         }
         else if (distance > 0.04f && boatSpawned == true)
         {
             timeRemaining += addTimer;
         }
-
+    }
+    void CampFireSpawn()
+    {
         if (distance < 0.04f)
         {
             if (timeRemaining <= campfireTime)
             {
-                //mixerManager.ArpMelodyVolumeControl(true);
+                mixerManager.CampFireVolumeControl(true);
                 campfireSpawned = true;
                 campfire.SetBool("Spawn", true);
                 campfire.SetBool("Despawn", false);
                 cf.SetActive(true);
             }
-            else if(timeRemaining > campfireTime)
+            else if (timeRemaining > campfireTime)
             {
                 cf.SetActive(false);
                 campfireSpawned = false;
                 campfire.SetBool("Despawn", true);
-                //mixerManager.ArpMelodyVolumeControl(false);
+                mixerManager.CampFireVolumeControl(false);
+
             }
         }
         else if (distance > 0.04f && campfireSpawned == true)
         {
             timeRemaining += addTimer;
         }
-
+    }
+    void SailBoatSpawn()
+    {
         if (distance < 0.04f)
         {
             if (timeRemaining <= sailBoatTime)
             {
-                //mixerManager.WavesVolumeControl(true);
                 sailBoatSpanwed = true;
                 sailBoat.SetBool("Spawn", true);
                 sailBoat.SetBool("Despawn", false);
             }
-            else if (timeRemaining > oceanTime)
+            else if (timeRemaining > sailBoatTime)
             {
                 sailBoatSpanwed = false;
                 sailBoat.SetBool("Despawn", true);
-                //mixerManager.WavesVolumeControl(false);
             }
         }
         else if (distance > 0.04f && sailBoatSpanwed == true)
         {
             timeRemaining += addTimer;
         }
-
+    }
+    void RainbowSpawn()
+    {
         if (distance < 0.04f)
         {
             if (timeRemaining <= rainbowTime)
             {
-                //mixerManager.WavesVolumeControl(true);
                 rainbowSpawned = true;
                 rainbow.SetBool("Spawn", true);
                 rainbow.SetBool("Despawn", false);
@@ -264,7 +252,6 @@ public class Fadout : MonoBehaviour
             {
                 rainbowSpawned = false;
                 rainbow.SetBool("Despawn", true);
-                //mixerManager.WavesVolumeControl(false);
             }
         }
         else if (distance > 0.04f && rainbowSpawned == true)
@@ -285,6 +272,39 @@ public class Fadout : MonoBehaviour
             everythingSpawned = false;
         }
 
+    }
+    void MovementCheck()
+    {
+        lastPosition = currentPosition;
+        currentPosition = PrimaryController.transform.position;
+
+        /*if(currentPosition == lastPosition)
+        {
+            Debug.Log("You're not moving");
+        }
+        else if(currentPosition != lastPosition)
+        {
+            Debug.Log("You are moving");
+        }*/
+        distance = Vector3.Distance(currentPosition, lastPosition);
+        print("Distance to other: " + distance);
+
+
+        if (distance > 0.04)
+        {
+            Debug.Log("You are moving");
+        }
+        else
+        {
+            Debug.Log("You're not moving");
+        }
+        /*//calculate the direction vector between the current position and the start position
+        Vector3 direction = transform.position - originPositionsObject.transform.position;
+        //calculate its length
+        float distance = direction.magnitude;
+        //convert the float distance to the string distance: distance.ToString()
+        //and show the string in the UI-text
+        textField.text = distance.ToString();*/
         /*if(Insert controller details here)
         {
 
@@ -319,19 +339,12 @@ public class Fadout : MonoBehaviour
     {
         throw new NotImplementedException();
     }
-
     public void TimeBeforeChanging()
-    {
-        
+    {      
         Debug.Log("TimeBeforeChanging section works");
     }
-
-    
-
     //tell the if statement if the player moved, despawn
     //if the player stops moving, respawn
-
-
     public void Timer()
     {
         if (time)
@@ -347,12 +360,10 @@ public class Fadout : MonoBehaviour
             timeRemaining += addTimer;
         }
     }
-
     public void AddTime()
     {
 
     }
-
     public void OnTime()
     {
         // Enable that object that you wanted to enable.

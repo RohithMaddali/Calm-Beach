@@ -15,7 +15,7 @@ public class A_PierAudio : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        source = GetComponent<AudioSource>();
+        source = GetComponentInChildren<AudioSource>();
         if (testing)
         {
             StartCoroutine(Timer());
