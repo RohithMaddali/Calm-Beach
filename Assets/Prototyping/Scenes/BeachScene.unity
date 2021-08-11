@@ -1156,7 +1156,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &428313998
 PrefabInstance:
@@ -1213,7 +1213,7 @@ PrefabInstance:
     - target: {fileID: 6115190896552047096, guid: 97768f613245426fb1fc4145b06b5c8a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6115190896552047096, guid: 97768f613245426fb1fc4145b06b5c8a,
         type: 3}
@@ -1754,7 +1754,7 @@ Transform:
   - {fileID: 1103236216}
   - {fileID: 64817266}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &676143309
 GameObject:
@@ -3108,7 +3108,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3411,7 +3411,7 @@ Transform:
   - {fileID: 1507049046}
   - {fileID: 590204960}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1129760050
 GameObject:
@@ -8877,7 +8877,7 @@ Transform:
   m_Children:
   - {fileID: 345390758}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1001 &1507049045
 PrefabInstance:
@@ -9236,7 +9236,7 @@ Transform:
   m_LocalScale: {x: 503.234, y: 503.234, z: 503.234}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1652051834
 Animator:
@@ -9487,7 +9487,7 @@ Transform:
   - {fileID: 209948899}
   - {fileID: 147987272}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: -5.88, z: 0}
 --- !u!1001 &1806498345
 PrefabInstance:
@@ -9630,6 +9630,23 @@ MonoBehaviour:
   sailBoatTime: 40
   rainbowTime: 20
   everythingSpawnedTime: 0
+  skyboxTimeInc: 10
+  oceanTimeInc: 10
+  rocksTimeInc: 30
+  pierTimeInc: 10
+  boatTimeInc: 20
+  campfireTimeInc: 20
+  sailBoatTimeInc: 20
+  rainbowTimeInc: 0
+  everythingSpawnedTimeInc: 0
+  skyBoxCap: 0
+  oceanCap: 0
+  rockCap: 0
+  pierCap: 0
+  boatCap: 0
+  sailBoatCap: 0
+  campCap: 0
+  rainbowCap: 0
   skySpawned: 0
   oceanSpawned: 0
   rocksSpawned: 0
@@ -9645,10 +9662,12 @@ MonoBehaviour:
   time: 0
   timeCap: 25
   startingVol: 0
+  spawnNumber: 0
   PrimaryController: {fileID: 1569637622}
   SecondaryController: {fileID: 438484208}
   translationThreshold: 0.001
   rotationThreshold: 0.001
+  distanceThreshold: 0.08
   distance: 0
 --- !u!4 &1827002466
 Transform:
@@ -9662,7 +9681,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1827002467
 MonoBehaviour:
@@ -9738,7 +9757,7 @@ PrefabInstance:
     - target: {fileID: 6529415330526082146, guid: be3a74ee4c9d4d899462b72a41f62728,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6529415330526082146, guid: be3a74ee4c9d4d899462b72a41f62728,
         type: 3}
