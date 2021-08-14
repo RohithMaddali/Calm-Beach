@@ -5363,7 +5363,7 @@ AnimationClip:
     intParameter: 1
     messageOptions: 0
   - time: 6.4583335
-    functionName: IndexReset
+    functionName: Sequence
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

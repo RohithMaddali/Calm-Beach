@@ -91,13 +91,17 @@ public class Fadout : MonoBehaviour
                 spawnNumber = 1;
                 mixerManager.SynthChordsVolumeControl(true);
                 mixerManager.WorldAppear();
+                mixerManager.IntroSynthVolumeControl(true);
+                mixerManager.WindVolumeControl(true);
                 skySpawned = true;
                 skybox.SetBool("Spawn", true);
                 skybox.SetBool("Despawn", false);
             }
             else if (timeRemaining > skyboxTime)
             {
+                mixerManager.IntroSynthVolumeControl(false);
                 mixerManager.SynthChordsVolumeControl(false);
+                mixerManager.WindVolumeControl(false);
                 skySpawned = false;
                 skybox.SetBool("Despawn", true);
             }
@@ -144,14 +148,12 @@ public class Fadout : MonoBehaviour
             if (timeRemaining <= rocksTime)
             {
                 spawnNumber = 3;
-                mixerManager.WindVolumeControl(true);
                 rocksSpawned = true;
                 rocks.SetBool("Spawn", true);
                 rocks.SetBool("Despawn", false);
             }
             else if (timeRemaining > rocksTime)
             {
-                mixerManager.WindVolumeControl(false);
                 rocksSpawned = false;
             }
         }

@@ -8,25 +8,30 @@ public class AudioMixerManager : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField]
     AudioMixer masterMixer;
-    [SerializeField] AudioClip worldAppear;
-    [SerializeField] AudioSource source;
+    [SerializeField] AudioMixerSnapshot fadeIntroSnapshot;
+    [SerializeField] AudioMixerSnapshot mainSnapshot;
     [SerializeField]
-    float wavesVol, windVol, fireVol, SynthChordsVol, arpMelodyVol, pianoMelodyVol, binuralBeatVol,boatVol;
+    float wavesVol, windVol, fireVol, SynthChordsVol, arpMelodyVol, pianoMelodyVol, binuralBeatVol,boatVol, introVol;
     float startVol = -80;
     [Header("Fade Time Settings")]
     [SerializeField]
     [Range(0f, 2f)]
     float lerpMod = 0.5f;
-    float[] lerp = new float[7];
+    float[] lerp = new float[8];
     bool doOnce;
 
     private void Start()
+    {
+        SetLerpValues();
+    }
+    void SetLerpValues()
     {
         for (int i = 0; i < lerp.Length; i++)
         {
             lerp[i] = -80;
         }
     }
+ 
     /// <summary>
     /// Controls the volume of a audio bus.
     /// </summary>
@@ -62,12 +67,14 @@ public class AudioMixerManager : MonoBehaviour
         if (isActive)
         {
             masterMixer.SetFloat("SynthChordsVol", lerp[2]);
-            lerp[2] = Mathf.Lerp(lerp[2], SynthChordsVol, lerpMod * Time.fixedDeltaTime); 
+            lerp[2] = Mathf.Lerp(lerp[2], SynthChordsVol, lerpMod * Time.fixedDeltaTime);
+            IntroSynthVolumeControl(true);
         }
         else
         {
             masterMixer.SetFloat("SynthChordsVol", lerp[2]);
             lerp[2] = Mathf.Lerp(lerp[2], startVol, lerpMod * Time.fixedDeltaTime);
+            IntroSynthVolumeControl(false);
         }
     }
     public void ArpMelodyVolumeControl(bool isActive)
@@ -135,11 +142,22 @@ public class AudioMixerManager : MonoBehaviour
             lerp[6] = Mathf.Lerp(lerp[6], startVol, lerpMod * Time.fixedDeltaTime);
         }
     }
+    public void IntroSynthVolumeControl(bool isActive)
+    {
+        if (isActive)
+        {
+            fadeIntroSnapshot.TransitionTo(30);
+        }
+        else
+        {
+            mainSnapshot.TransitionTo(30);
+        }
+    }
     public void WorldAppear()
     {
-        if (!source.isPlaying && doOnce)
+        if (!doOnce)
         {
-            source.PlayOneShot(worldAppear);
+            //source.PlayOneShot(worldAppear);
             doOnce = true;
         }
     }
