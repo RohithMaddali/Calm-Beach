@@ -10165,6 +10165,8 @@ MonoBehaviour:
   rocks: {fileID: 1400529200}
   pier: {fileID: 413184345}
   boat: {fileID: 2097688754}
+  tree: {fileID: 0}
+  lightHouse: {fileID: 0}
   sailBoat: {fileID: 1765868580}
   rainbow: {fileID: 428314000}
   campfire: {fileID: 1989269816}
@@ -10174,7 +10176,9 @@ MonoBehaviour:
   pierTime: 120
   boatTime: 80
   campfireTime: 60
-  sailBoatTime: 40
+  treeTime: 50
+  lightHouseTime: 40
+  sailBoatTime: 30
   rainbowTime: 20
   everythingSpawnedTime: 0
   skyboxTimeInc: 10
@@ -10183,6 +10187,8 @@ MonoBehaviour:
   pierTimeInc: 10
   boatTimeInc: 20
   campfireTimeInc: 20
+  treeTimeInc: 20
+  lightHouseTimeInc: 20
   sailBoatTimeInc: 20
   rainbowTimeInc: 0
   everythingSpawnedTimeInc: 0
@@ -10191,6 +10197,8 @@ MonoBehaviour:
   rockCap: 0
   pierCap: 0
   boatCap: 0
+  treeCap: 0
+  lightHouseCap: 0
   sailBoatCap: 0
   campCap: 0
   rainbowCap: 0
@@ -10200,7 +10208,9 @@ MonoBehaviour:
   pierSpawned: 0
   boatSpawned: 0
   campfireSpawned: 0
-  sailBoatSpanwed: 0
+  treeSpawned: 0
+  lightHouseSpawned: 0
+  sailBoatSpawned: 0
   rainbowSpawned: 0
   everythingSpawned: 0
   cf: {fileID: 1424282357}
