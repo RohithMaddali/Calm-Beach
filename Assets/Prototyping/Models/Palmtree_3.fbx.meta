@@ -38,15 +38,15 @@ ModelImporter:
       name: Palm3_Armature|Palm3_ArmatureAction
       takeName: Palm3_Armature|Palm3_ArmatureAction
       internalID: 8674936659961266951
-      firstFrame: 1
-      lastFrame: 100
+      firstFrame: 101
+      lastFrame: 200
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

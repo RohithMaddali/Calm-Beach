@@ -1510,6 +1510,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmtree_4
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 82f414735de26f649ae08072a8afc1d4,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e674c9cb0a0c924408f803634f2cd911, type: 2}
     - target: {fileID: -4216859302048453862, guid: 82f414735de26f649ae08072a8afc1d4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3672,6 +3677,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palmtree_3
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 42058bc6e52c6984d925a4b16d8175a3,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5e036a67c57cfd04da5605cc2dc73260, type: 2}
     - target: {fileID: -4216859302048453862, guid: 42058bc6e52c6984d925a4b16d8175a3,
         type: 3}
       propertyPath: m_LocalPosition.x
