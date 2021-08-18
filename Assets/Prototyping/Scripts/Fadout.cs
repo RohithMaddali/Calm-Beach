@@ -63,13 +63,13 @@ public class Fadout : MonoBehaviour
     {
         MovementCheck();
         SkyboxSpawn();
-        OceanSpawn();
+        //OceanSpawn();
         RocksSpawn();
         PierSpawn();
         BoatSpawn();
         CampFireSpawn();
-        //TreeSpawn();
-        //LightHouseSpawn();
+        TreeSpawn();
+        LightHouseSpawn();
         SailBoatSpawn();
         RainbowSpawn();
         MovementCheck();
@@ -116,7 +116,7 @@ public class Fadout : MonoBehaviour
     }
     void OceanSpawn()
     {
-        if (distance < distanceThreshold)
+        /*if (distance < distanceThreshold)
         {
             oceanCap = false;
             if (timeRemaining <= oceanTime)
@@ -140,7 +140,7 @@ public class Fadout : MonoBehaviour
         {
             oceanCap = true;
             timeRemaining += oceanTimeInc;
-        }
+        }*/
     }
     void RocksSpawn()
     {
@@ -250,7 +250,7 @@ public class Fadout : MonoBehaviour
             timeRemaining += campfireTimeInc;
         }
     }
-    /*void TreeSpawn()
+    void TreeSpawn()
     {
         if (distance < distanceThreshold)
         {
@@ -297,7 +297,7 @@ public class Fadout : MonoBehaviour
             lightHouseCap = true;
             timeRemaining += lightHouseTimeInc;
         }
-    }*/
+    }
     void SailBoatSpawn()
     {
         if (distance < distanceThreshold)
