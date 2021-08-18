@@ -10,11 +10,11 @@ using System;
 public class Fadout : MonoBehaviour
 {
     //Spawning/Animating variables
-    public Animator skybox, ocean,rocks, pier, boat, tree, lightHouse, sailBoat, rainbow, campfire;
-    public int skyboxTime, oceanTime,rocksTime, pierTime, boatTime, campfireTime, treeTime, lightHouseTime, sailBoatTime,rainbowTime, everythingSpawnedTime;
-    public int skyboxTimeInc, oceanTimeInc, rocksTimeInc, pierTimeInc, boatTimeInc, campfireTimeInc, treeTimeInc, lightHouseTimeInc, sailBoatTimeInc, rainbowTimeInc, everythingSpawnedTimeInc;
-    public bool skyBoxCap, oceanCap, rockCap, pierCap, boatCap, treeCap, lightHouseCap, sailBoatCap, campCap, rainbowCap;
-    public bool skySpawned, oceanSpawned,rocksSpawned, pierSpawned, boatSpawned, campfireSpawned, treeSpawned, lightHouseSpawned, sailBoatSpawned, rainbowSpawned, everythingSpawned;
+    public Animator skybox, GodRays,rocks, pier, boat, tree, lightHouse, sailBoat, rainbow, campfire;
+    public int skyboxTime, RaysTime,rocksTime, pierTime, boatTime, campfireTime, treeTime, lightHouseTime, sailBoatTime,rainbowTime, everythingSpawnedTime;
+    public int skyboxTimeInc, RaysTimeInc, rocksTimeInc, pierTimeInc, boatTimeInc, campfireTimeInc, treeTimeInc, lightHouseTimeInc, sailBoatTimeInc, rainbowTimeInc, everythingSpawnedTimeInc;
+    public bool skyBoxCap, RaysCap, rockCap, pierCap, boatCap, treeCap, lightHouseCap, sailBoatCap, campCap, rainbowCap;
+    public bool skySpawned, RaysSpawned,rocksSpawned, pierSpawned, boatSpawned, campfireSpawned, treeSpawned, lightHouseSpawned, sailBoatSpawned, rainbowSpawned, everythingSpawned;
     public GameObject cf;
 
     AudioMixerManager mixerManager;
@@ -63,7 +63,7 @@ public class Fadout : MonoBehaviour
     {
         MovementCheck();
         SkyboxSpawn();
-        //OceanSpawn();
+        Godrays();
         RocksSpawn();
         PierSpawn();
         BoatSpawn();
@@ -114,33 +114,33 @@ public class Fadout : MonoBehaviour
             timeRemaining += skyboxTimeInc;
         }
     }
-    void OceanSpawn()
+    void Godrays()
     {
-        /*if (distance < distanceThreshold)
+        if (distance < distanceThreshold)
         {
-            oceanCap = false;
-            if (timeRemaining <= oceanTime)
+            RaysCap = false;
+            if (timeRemaining <= RaysTime)
             {
                 spawnNumber = 2;
                 mixerManager.WavesVolumeControl(true);
                 mixerManager.BinuralBeatVolumeControl(true);
-                oceanSpawned = true;
-                ocean.SetBool("Spawn", true);
-                ocean.SetBool("Despawn", false);
+                RaysSpawned = true;
+                GodRays.SetBool("Spawn", true);
+                GodRays.SetBool("Despawn", false);
             }
-            else if (timeRemaining > oceanTime)
+            else if (timeRemaining > RaysTime)
             {
-                oceanSpawned = false;
-                ocean.SetBool("Despawn", true);
+                RaysSpawned = false;
+                GodRays.SetBool("Despawn", true);
                 mixerManager.WavesVolumeControl(false);
                 mixerManager.BinuralBeatVolumeControl(false);
             }
         }
-        else if (distance > distanceThreshold && oceanSpawned == true && oceanCap == false && spawnNumber == 2)
+        else if (distance > distanceThreshold && RaysSpawned == true && RaysCap == false && spawnNumber == 2)
         {
-            oceanCap = true;
-            timeRemaining += oceanTimeInc;
-        }*/
+            RaysCap = true;
+            timeRemaining += RaysTimeInc;
+        }
     }
     void RocksSpawn()
     {
