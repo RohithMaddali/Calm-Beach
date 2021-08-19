@@ -8,16 +8,18 @@ public class AudioMixerManager : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField]
     AudioMixer masterMixer;
+    [SerializeField] AudioSource lighHouseSource;
+    [SerializeField] AudioClip lightHouse;
     [SerializeField] AudioMixerSnapshot fadeIntroSnapshot;
     [SerializeField] AudioMixerSnapshot mainSnapshot;
     [SerializeField]
-    float wavesVol, windVol, fireVol, SynthChordsVol, arpMelodyVol, pianoMelodyVol, binuralBeatVol,boatVol, introVol;
+    float wavesVol, windVol, fireVol, SynthChordsVol, arpMelodyVol, pianoMelodyVol, binuralBeatVol, boatVol, introVol, treesAndBirdsVol,lightHouseVol;
     float startVol = -80;
     [Header("Fade Time Settings")]
     [SerializeField]
     [Range(0f, 2f)]
     float lerpMod = 0.5f;
-    float[] lerp = new float[8];
+    float[] lerp = new float[10];
     bool doOnce;
 
     private void Start()
@@ -31,7 +33,6 @@ public class AudioMixerManager : MonoBehaviour
             lerp[i] = -80;
         }
     }
- 
     /// <summary>
     /// Controls the volume of a audio bus.
     /// </summary>
@@ -51,7 +52,7 @@ public class AudioMixerManager : MonoBehaviour
     }
     public void WavesVolumeControl(bool isActive)
     {
-        if (isActive) 
+        if (isActive)
         {
             masterMixer.SetFloat("WavesVol", lerp[1]);
             lerp[1] = Mathf.Lerp(lerp[1], wavesVol, lerpMod * Time.fixedDeltaTime);
@@ -84,7 +85,7 @@ public class AudioMixerManager : MonoBehaviour
             masterMixer.SetFloat("ArpMelodyVol", lerp[3]);
             lerp[3] = Mathf.Lerp(lerp[3], arpMelodyVol, lerpMod * Time.fixedDeltaTime);
         }
-        else 
+        else
         {
             masterMixer.SetFloat("ArpMelodyVol", lerp[3]);
             lerp[3] = Mathf.Lerp(lerp[3], startVol, lerpMod * Time.fixedDeltaTime);
@@ -133,13 +134,13 @@ public class AudioMixerManager : MonoBehaviour
     {
         if (isActive)
         {
-            masterMixer.SetFloat("BoatVol", lerp[6]);
-            lerp[6] = Mathf.Lerp(lerp[6], boatVol, lerpMod * Time.fixedDeltaTime);
+            masterMixer.SetFloat("BoatVol", lerp[7]);
+            lerp[7] = Mathf.Lerp(lerp[7], boatVol, lerpMod * Time.fixedDeltaTime);
         }
         else
         {
-            masterMixer.SetFloat("BoatVol", lerp[6]);
-            lerp[6] = Mathf.Lerp(lerp[6], startVol, lerpMod * Time.fixedDeltaTime);
+            masterMixer.SetFloat("BoatVol", lerp[7]);
+            lerp[7] = Mathf.Lerp(lerp[7], startVol, lerpMod * Time.fixedDeltaTime);
         }
     }
     public void IntroSynthVolumeControl(bool isActive)
@@ -153,12 +154,17 @@ public class AudioMixerManager : MonoBehaviour
             mainSnapshot.TransitionTo(30);
         }
     }
-    public void WorldAppear()
+    public void TreesAndBirdsVolumeControl(bool isActive)
     {
-        if (!doOnce)
+        if (isActive)
         {
-            //source.PlayOneShot(worldAppear);
-            doOnce = true;
+            masterMixer.SetFloat("Trees&BirdsVol", lerp[8]);
+            lerp[8] = Mathf.Lerp(lerp[8], treesAndBirdsVol, lerpMod * Time.fixedDeltaTime);
+        }
+        else
+        {
+            masterMixer.SetFloat("Trees&BirdsVol", lerp[8]);
+            lerp[8] = Mathf.Lerp(lerp[8], startVol, lerpMod * Time.fixedDeltaTime);
         }
     }
 }

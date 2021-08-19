@@ -92,9 +92,11 @@ public class Fadout : MonoBehaviour
             {
                 spawnNumber = 1;
                 mixerManager.SynthChordsVolumeControl(true);
-                mixerManager.WorldAppear();
                 mixerManager.IntroSynthVolumeControl(true);
                 mixerManager.WindVolumeControl(true);
+                mixerManager.WavesVolumeControl(true);
+                mixerManager.BinuralBeatVolumeControl(true);
+
                 skySpawned = true;
                 skybox.SetBool("Spawn", true);
                 skybox.SetBool("Despawn", false);
@@ -122,8 +124,6 @@ public class Fadout : MonoBehaviour
             if (timeRemaining <= RaysTime)
             {
                 spawnNumber = 2;
-                mixerManager.WavesVolumeControl(true);
-                mixerManager.BinuralBeatVolumeControl(true);
                 RaysSpawned = true;
                 GodRays.SetBool("Spawn", true);
                 GodRays.SetBool("Despawn", false);
@@ -132,8 +132,6 @@ public class Fadout : MonoBehaviour
             {
                 RaysSpawned = false;
                 GodRays.SetBool("Despawn", true);
-                mixerManager.WavesVolumeControl(false);
-                mixerManager.BinuralBeatVolumeControl(false);
             }
         }
         else if (distance > distanceThreshold && RaysSpawned == true && RaysCap == false && spawnNumber == 2)
@@ -257,6 +255,7 @@ public class Fadout : MonoBehaviour
             treeCap = false;
             if (timeRemaining <= treeTime)
             {
+                mixerManager.TreesAndBirdsVolumeControl(true);
                 spawnNumber = 7;
                 treeSpawned = true;
                 tree.SetBool("Spawn", true);
@@ -264,6 +263,7 @@ public class Fadout : MonoBehaviour
             }
             else if (timeRemaining > treeTime)
             {
+                mixerManager.TreesAndBirdsVolumeControl(false);
                 treeSpawned = false;
                 tree.SetBool("Despawn", true);
             }
