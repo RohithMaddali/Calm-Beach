@@ -15,7 +15,6 @@ public class Fadout : MonoBehaviour
     public int skyboxTimeInc, RaysTimeInc, rocksTimeInc, pierTimeInc, boatTimeInc, campfireTimeInc, treeTimeInc, lightHouseTimeInc, sailBoatTimeInc, rainbowTimeInc, everythingSpawnedTimeInc;
     public bool skyBoxCap, RaysCap, rockCap, pierCap, boatCap, treeCap, lightHouseCap, sailBoatCap, campCap, rainbowCap;
     public bool skySpawned, RaysSpawned,rocksSpawned, pierSpawned, boatSpawned, campfireSpawned, treeSpawned, lightHouseSpawned, sailBoatSpawned, rainbowSpawned, everythingSpawned;
-    public GameObject cf;
 
     AudioMixerManager mixerManager;
     
@@ -231,11 +230,9 @@ public class Fadout : MonoBehaviour
                 campfireSpawned = true;
                 campfire.SetBool("Spawn", true);
                 campfire.SetBool("Despawn", false);
-                cf.SetActive(true);
             }
             else if (timeRemaining > campfireTime)
             {
-                cf.SetActive(false);
                 campfireSpawned = false;
                 campfire.SetBool("Despawn", true);
                 mixerManager.CampFireVolumeControl(false);
