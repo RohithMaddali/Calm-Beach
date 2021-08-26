@@ -95,7 +95,7 @@ public class Fadout : MonoBehaviour
                 mixerManager.WindVolumeControl(true);
                 mixerManager.WavesVolumeControl(true);
                 mixerManager.BinuralBeatVolumeControl(true);
-
+                mixerManager.CampFireVolumeControl(true);
                 skySpawned = true;
                 skybox.SetBool("Spawn", true);
                 skybox.SetBool("Despawn", false);
@@ -105,6 +105,7 @@ public class Fadout : MonoBehaviour
                 mixerManager.IntroSynthVolumeControl(false);
                 mixerManager.SynthChordsVolumeControl(false);
                 mixerManager.WindVolumeControl(false);
+                mixerManager.CampFireVolumeControl(false);
                 skySpawned = false;
                 skybox.SetBool("Despawn", true);
             }
@@ -180,7 +181,6 @@ public class Fadout : MonoBehaviour
                 pierSpawned = false;
                 pier.SetBool("Despawn", true);
                 mixerManager.ArpMelodyVolumeControl(false);
-
             }
         }
         else if (distance > distanceThreshold && pierSpawned == true && pierCap == false && spawnNumber == 4)
@@ -209,7 +209,6 @@ public class Fadout : MonoBehaviour
                 mixerManager.PianoMelodyVolumeControl(false);
                 boatSpawned = false;
                 boat.SetBool("Despawn", true);
-
             }
         }
         else if (distance > distanceThreshold && boatSpawned == true && boatCap == false && spawnNumber == 5)
@@ -226,7 +225,6 @@ public class Fadout : MonoBehaviour
             if (timeRemaining <= campfireTime)
             {
                 spawnNumber = 6;
-                mixerManager.CampFireVolumeControl(true);
                 campfireSpawned = true;
                 campfire.SetBool("Spawn", true);
                 campfire.SetBool("Despawn", false);
@@ -235,8 +233,6 @@ public class Fadout : MonoBehaviour
             {
                 campfireSpawned = false;
                 campfire.SetBool("Despawn", true);
-                mixerManager.CampFireVolumeControl(false);
-
             }
         }
         else if (distance > distanceThreshold && campfireSpawned == true && campCap == false && spawnNumber == 6)
