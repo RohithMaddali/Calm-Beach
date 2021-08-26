@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-8636701735074822714
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TreasureChest
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: e03ee59ecf870de4888da4e407204e2a
+  m_Children: []
+  m_Volume: c833e403bf2860444b0fdb4ba8ddee06
+  m_Pitch: 85ea6698e18c3aa4b96c998e5066f1e7
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 5551211376067870063}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &-8045524437359091082
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -338,9 +357,10 @@ AudioMixerController:
     - 925fd10af47a59e4c9f99eb6797cbed9
     - 65f345a361f8c104390caa657b81bf61
     - ca63ba0f591a8ff408c0bf4b0b8b51d0
+    - e03ee59ecf870de4888da4e407204e2a
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: -848388605142655075}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -357,6 +377,7 @@ AudioMixerGroupController:
   - {fileID: 288006008112652559}
   - {fileID: 5189738763201744950}
   - {fileID: -3424388312433131094}
+  - {fileID: -8636701735074822714}
   m_Volume: 5426a38206a37214985c9a4b93b6be11
   m_Pitch: 65f834bb8771a074ba202b204d8167c6
   m_Send: 00000000000000000000000000000000
@@ -598,6 +619,20 @@ AudioMixerEffectController:
   m_EffectID: 764300e0f6694ff47a5eaf41d90b57a2
   m_EffectName: Attenuation
   m_MixLevel: 68d434499c8886e4ea38097789a36d6c
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &5551211376067870063
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 53e5c3bf9df1b7b46bc8fd4168551ef7
+  m_EffectName: Attenuation
+  m_MixLevel: a271654d4801aff48b58b22cc1b9c3c2
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
