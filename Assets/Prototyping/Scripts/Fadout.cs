@@ -176,7 +176,7 @@ public class Fadout : MonoBehaviour
                 pier.SetBool("Spawn", true);
                 pier.SetBool("Despawn", false);
             }
-            else if (timeRemaining > pierTime)
+            /*else if (timeRemaining > pierTime)
             {
                 pierSpawned = false;
                 pier.SetBool("Despawn", true);
@@ -186,7 +186,7 @@ public class Fadout : MonoBehaviour
         else if (distance > distanceThreshold && pierSpawned == true && pierCap == false && spawnNumber == 4)
         {
             pierCap = true;
-            timeRemaining += pierTimeInc;
+            timeRemaining += pierTimeInc;*/
         }
     }
     void BoatSpawn()
@@ -203,7 +203,7 @@ public class Fadout : MonoBehaviour
                 boat.SetBool("Spawn", true);
                 boat.SetBool("Despawn", false);
             }
-            else if (timeRemaining > boatTime)
+            /*else if (timeRemaining > boatTime)
             {
                 mixerManager.BoatVolumeControl(false);
                 mixerManager.PianoMelodyVolumeControl(false);
@@ -214,7 +214,7 @@ public class Fadout : MonoBehaviour
         else if (distance > distanceThreshold && boatSpawned == true && boatCap == false && spawnNumber == 5)
         {
             boatCap = true;
-            timeRemaining += boatTimeInc;
+            timeRemaining += boatTimeInc;*/
         }
     }
     void CampFireSpawn()
@@ -229,7 +229,7 @@ public class Fadout : MonoBehaviour
                 campfire.SetBool("Spawn", true);
                 campfire.SetBool("Despawn", false);
             }
-            else if (timeRemaining > campfireTime)
+            /*else if (timeRemaining > campfireTime)
             {
                 campfireSpawned = false;
                 campfire.SetBool("Despawn", true);
@@ -238,7 +238,7 @@ public class Fadout : MonoBehaviour
         else if (distance > distanceThreshold && campfireSpawned == true && campCap == false && spawnNumber == 6)
         {
             campCap = true;
-            timeRemaining += campfireTimeInc;
+            timeRemaining += campfireTimeInc;*/
         }
     }
     void TreeSpawn()
@@ -254,7 +254,7 @@ public class Fadout : MonoBehaviour
                 tree.SetBool("Spawn", true);
                 tree.SetBool("Despawn", false);
             }
-            else if (timeRemaining > treeTime)
+            /*else if (timeRemaining > treeTime)
             {
                 mixerManager.TreesAndBirdsVolumeControl(false);
                 treeSpawned = false;
@@ -264,7 +264,7 @@ public class Fadout : MonoBehaviour
         else if (distance > distanceThreshold && treeSpawned == true && treeCap == false && spawnNumber == 7)
         {
             treeCap = true;
-            timeRemaining += treeTimeInc;
+            timeRemaining += treeTimeInc;*/
         }
     }
     void LightHouseSpawn()
@@ -279,7 +279,7 @@ public class Fadout : MonoBehaviour
                 lightHouse.SetBool("Spawn", true);
                 lightHouse.SetBool("Despawn", false);
             }
-            else if (timeRemaining > lightHouseTime)
+            /*else if (timeRemaining > lightHouseTime)
             {
                 lightHouseSpawned = false;
                 lightHouse.SetBool("Despawn", true);
@@ -288,7 +288,7 @@ public class Fadout : MonoBehaviour
         else if (distance > distanceThreshold && lightHouseSpawned == true && lightHouseCap == false && spawnNumber == 8)
         {
             lightHouseCap = true;
-            timeRemaining += lightHouseTimeInc;
+            timeRemaining += lightHouseTimeInc;*/
         }
     }
     void SailBoatSpawn()
@@ -303,7 +303,7 @@ public class Fadout : MonoBehaviour
                 sailBoat.SetBool("Spawn", true);
                 sailBoat.SetBool("Despawn", false);
             }
-            else if (timeRemaining > sailBoatTime)
+            /*else if (timeRemaining > sailBoatTime)
             {
                 sailBoatSpawned = false;
                 sailBoat.SetBool("Despawn", true);
@@ -312,7 +312,7 @@ public class Fadout : MonoBehaviour
         else if (distance > distanceThreshold && sailBoatSpawned == true && sailBoatCap == false && spawnNumber == 9)
         {
             sailBoatCap = true;
-            timeRemaining += sailBoatTimeInc;
+            timeRemaining += sailBoatTimeInc;*/
         }
     }
     void RainbowSpawn()
@@ -327,7 +327,7 @@ public class Fadout : MonoBehaviour
                 rainbow.SetBool("Spawn", true);
                 rainbow.SetBool("Despawn", false);
             }
-            else if (timeRemaining > rainbowTime)
+            /*else if (timeRemaining > rainbowTime)
             {
                 rainbowSpawned = false;
                 rainbow.SetBool("Despawn", true);
@@ -336,7 +336,7 @@ public class Fadout : MonoBehaviour
         else if (distance > distanceThreshold && rainbowSpawned == true && rainbowCap == false && spawnNumber == 10)
         {
             rainbowCap = true;
-            timeRemaining += rainbowTimeInc;
+            timeRemaining += rainbowTimeInc;*/
         }      
     }
     void MovementCheck()
